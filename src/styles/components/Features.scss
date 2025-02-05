@@ -1,0 +1,169 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.features {
+  padding: 80px 20px; // Добавил padding по бокам
+  background-color: $light-gray-background;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
+
+  &.dark {
+    background-image: linear-gradient(
+      to bottom,
+      darken($dark-gray, 5%),
+      darken($dark-gray, 10%)
+    );
+
+    h1,
+    h2,
+    h3,
+    p {
+      color: $dark-text-color;
+    }
+
+    .feature {
+      background-color: $dark-gray;
+      border-color: $dark-gray-border;
+
+      .feature-title,
+      .feature-description {
+        color: $dark-text-color;
+      }
+
+      .feature-icon {
+        color: $dark-primary-color;
+        border-color: $dark-primary-color;
+      }
+    }
+  }
+}
+
+.features-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; // Добавил ограничение ширины
+  margin: 0 auto; // Добавил
+}
+
+.features-section-title,
+.features-section-subtitle {
+  display: none;
+}
+
+.features-intro {
+  margin-bottom: 40px;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
+}
+
+.features-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+  color: $text-color;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+.features-description {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: $text-color-light;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+}
+
+.features-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+  align-items: stretch;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
+}
+
+.feature {
+  width: calc(25% - 30px);
+  padding: 30px;
+  border: 1px solid $light-gray-border;
+  border-radius: 5px;
+  text-align: center;
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  @media (max-width: 1200px) {
+    width: calc(50% - 30px);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+  }
+}
+
+.feature-icon {
+  @include flex-center;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: $primary-color;
+  width: 50px;
+  height: 50px;
+  border: 2px solid $primary-color;
+  border-radius: 50%;
+
+  @media (max-width: 768px) {
+    font-size: 1.7rem; // Немного уменьшил размер для мобильных
+    width: 50px; // Немного уменьшил размер для мобильных
+    height: 50px; // Немного уменьшил размер для мобильных
+    margin-bottom: 10px; // Уменьшил отступ
+  }
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 600;
+  color: $text-color;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem; // Немного уменьшил размер для мобильных
+  }
+}
+
+.feature-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: $text-color;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1rem; // Немного уменьшил размер для мобильных
+  }
+}

@@ -1,0 +1,182 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.header {
+  background-color: $light-gray;
+  padding: 30px 20px;
+  border-bottom: 1px solid $light-gray-border;
+
+  @media (max-width: 768px) {
+    padding: 20px 10px;
+  }
+
+  &.dark {
+    background-color: $dark-gray;
+    border-bottom-color: $dark-gray-border;
+
+    .logo {
+      color: $dark-text-color;
+    }
+
+    .hamburger-menu .fa-bars {
+      color: $dark-text-color;
+    }
+
+    .nav-list {
+      background-color: $dark-gray;
+    }
+
+    .nav-link {
+      color: $dark-text-color;
+
+      &:hover {
+        color: $dark-primary-color;
+      }
+    }
+
+    .login-button {
+      background-color: $dark-primary-color;
+      color: $white;
+    }
+  }
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 28px;
+  color: $primary-color;
+}
+
+.hamburger-menu {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .fa-bars {
+    font-size: 24px;
+    color: $primary-color;
+  }
+}
+
+.nav-open {
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: $light-gray;
+    z-index: 10;
+  }
+
+  .login-button-wrapper {
+    margin-top: 0;
+  }
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: $light-gray;
+    z-index: 10;
+  }
+}
+
+.nav-item {
+  margin-left: 30px;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.nav-link {
+  text-decoration: none;
+  color: $text-color;
+  transition: color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.login-button-wrapper {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    margin-top: 0;
+  }
+}
+
+.login-button {
+  background-color: $primary-color;
+  color: $white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.theme-toggler {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  margin-left: 20px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:focus {
+    outline: none;
+  }
+
+  .fa-sun,
+  .fa-moon {
+    transition: opacity 0.3s ease;
+  }
+
+  .fa-sun {
+    color: $primary-color;
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+
+  .fa-moon {
+    color: $dark-primary-color;
+
+    &.visible {
+      opacity: 1;
+    }
+  }
+}

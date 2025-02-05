@@ -1,0 +1,139 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.hero {
+  background-image: linear-gradient(
+    to bottom,
+    $light-gray,
+    lighten($light-gray, 3%)
+  );
+  padding: 100px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 40vh;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 80px 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 60px 10px;
+  }
+
+  &.dark {
+    background-image: linear-gradient(
+      to bottom,
+      darken($dark-gray, 5%),
+      darken($dark-gray, 10%)
+    );
+
+    h1,
+    p {
+      color: $dark-text-color;
+    }
+
+    .hero-image img {
+      box-shadow: 0px 5px 10px $dark-image-shadow-color;
+    }
+  }
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.hero-content {
+  text-align: left;
+  margin-bottom: 30px;
+  width: 50%;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: $text-color;
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+      margin-bottom: 10px; // Уменьшил отступ
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 20px; // Уменьшил отступ
+    color: $text-color-light;
+
+    @media (max-width: 768px) {
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
+  }
+}
+
+.hero-buttons {
+  margin-bottom: 30px; // Уменьшил отступ
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+
+  .button {
+    // Перенес стили сюда
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @media (max-width: 768px) {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.hero-image {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    box-shadow: 0px 5px 10px $image-shadow-color;
+  }
+}

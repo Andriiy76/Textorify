@@ -1,0 +1,67 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.footer {
+  background-color: $light-gray;
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid $light-gray-border;
+  font-size: 14px;
+
+  &.dark {
+    background-color: $dark-gray;
+    border-top-color: $dark-gray-border;
+
+    .copyright {
+      color: $dark-light-text-color; // Исправлено на $dark-light-text-color
+    }
+
+    .footer-links a {
+      color: $dark-text-color;
+
+      &:hover {
+        color: lighten($dark-text-color, 15%);
+      }
+    }
+  }
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.copyright {
+  color: $text-color-light;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.footer-links a {
+  color: $text-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
