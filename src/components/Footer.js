@@ -1,13 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/components/Footer.scss";
-import { ThemeContext } from "../context/ThemeContext";
 
 const Footer = () => {
-  const { isDarkTheme } = useContext(ThemeContext);
-
   return (
-    <footer className={`footer ${isDarkTheme ? "dark" : ""}`}>
+    <footer className="footer">
       <div className="footer-container">
         <p className="copyright">
           © {new Date().getFullYear()} Textorify. All rights reserved.

@@ -3,35 +3,10 @@
 
 .faq {
   padding: 80px 20px;
-  background-color: $white;
+  background-color: #f5fafd; // Фон для всей секции
 
   @media (max-width: 768px) {
     padding: 60px 20px;
-  }
-
-  &.dark {
-    background-color: $dark-background;
-
-    .faq-title,
-    .faq-question,
-    .faq-answer {
-      color: $dark-text-color;
-    }
-
-    .faq-plus {
-      color: $dark-primary-color;
-    }
-
-    .faq-item {
-      border-bottom-color: $dark-gray-border;
-    }
-
-    .faq-question.active {
-      background-color: transparent;
-    }
-    .faq-answer.active {
-      color: $dark-text-color;
-    }
   }
 }
 
@@ -85,7 +60,7 @@
 .faq-item {
   border-bottom: 1px solid $light-gray-border;
   padding: 20px 0;
-  overflow: hidden; // Добавляем overflow: hidden
+  overflow: hidden;
 
   &:last-child {
     border-bottom: none;
@@ -99,11 +74,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0;
-  background: none;
+  padding: 15px;
+  background-color: #f5fafd; // Фон вопроса такой же, как у секции
   border: none;
   width: 100%;
   text-align: left;
+  color: $text-color;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   &.active {
     .faq-plus {
@@ -121,19 +99,21 @@
   font-weight: bold;
   color: $primary-color;
   transition: transform 0.3s ease;
-  flex-shrink: 0;
+    flex-shrink: 0;
 }
 
 .faq-answer {
   font-size: 1rem;
   line-height: 1.6;
   color: $text-color;
-  max-height: 0; // Добавляем для анимации
-  overflow: hidden; // Добавляем для анимации
-  transition: max-height 0.3s ease-in-out; // Добавляем для анимации
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  background-color: $white; // Фон ответа - белый
+  padding: 0 15px 15px;
 
   &.active {
-    max-height: 500px; // Добавляем для анимации
+    max-height: 500px;
   }
 
   p {

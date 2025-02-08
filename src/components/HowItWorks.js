@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import "../styles/components/HowItWorks.scss";
 import step1Image from "../images/step1_placeholder.jpg";
 import step2Image from "../images/step2_placeholder.jpg";
 import step3Image from "../images/step3_placeholder.jpg";
 import step4Image from "../images/step4_placeholder.jpg";
 import { motion } from "framer-motion";
-import { ThemeContext } from "../context/ThemeContext";
 
 const HowItWorks = () => {
-  const { isDarkTheme } = useContext(ThemeContext);
   const steps = [
     {
       image: step1Image,
@@ -45,7 +43,7 @@ const HowItWorks = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3, // Задержка между появлением дочерних элементов
+        staggerChildren: 0.3,
       },
     },
   };
@@ -54,16 +52,13 @@ const HowItWorks = () => {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0 },
   };
-
   const rightStepVariants = {
     hidden: { opacity: 0, x: 50 },
     visible: { opacity: 1, x: 0 },
   };
 
   return (
-    <section
-      className={`howitworks howitworks-alternate ${isDarkTheme ? "dark" : ""}`}
-    >
+    <section className="howitworks">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

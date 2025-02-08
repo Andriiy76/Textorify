@@ -1,29 +1,33 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/components/Header.scss";
-import ThemeToggler from "./ThemeToggler";
-import { ThemeContext } from "../context/ThemeContext";
+import { useAuth } from '../context/AuthContext';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isDarkTheme } = useContext(ThemeContext);
+  const { currentUser, logout } = useAuth();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <header className={`header ${isDarkTheme ? "dark" : "light"}`}>
+    <header className="header">
       <div className="header-container">
         <Link to="/" className="logo">
           TEXTORIFY
         </Link>
-        <ThemeToggler />
-        <button className="hamburger-menu" onClick={toggleMenu}>
-          <FontAwesomeIcon icon={faBars} />
-        </button>
+        <div className="nav-right">
+          <button
+            className="hamburger-menu"
+            onClick={toggleMenu}
+            aria-label="Toggle Menu"
+          >
+            <FontAwesomeIcon icon={faBars} />
+          </button>
+        </div>
         <nav className={isMenuOpen ? "nav-open" : ""}>
           <ul className="nav-list">
             <li className="nav-item">
@@ -41,16 +45,34 @@ const Header = () => {
                 Blog
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-link login-button">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/signup" className="nav-link">
-                Signup
-              </Link>
-            </li>
+            {/*  Условный рендеринг  */}
+            {!currentUser ? (
+              <>
+                <li className="nav-item">
+                  <Link to="/login" className="login-button-wrapper">
+                    <button className="login-button">Login</button>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/signup" className="signup-button-wrapper">
+                    <button className="signup-button">Signup</button>
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <span className="username">
+                    {currentUser.name}
+                    </span> {/*  Показываем имя пользователя  */}
+                </li>
+                <li className="nav-item">
+                  <button className="logout-button" onClick={logout}> {/* Добавляем кнопку Logout */}
+                    Logout
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>

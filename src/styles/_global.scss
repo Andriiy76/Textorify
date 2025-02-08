@@ -1,8 +1,6 @@
-// Импортируем переменные и миксины
 @import "./variables";
 @import "./mixins";
 
-// Общие стили для всего сайта
 * {
   margin: 0;
   padding: 0;
@@ -14,45 +12,10 @@ body {
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  --text-color: #{$text-color};
-  --text-color-light: #{$text-color-light};
-  --bg-color: #{$white};
-  --light-gray-border: #{$light-gray-border};
-  --light-gray: #{$light-gray};
-  --light-gray-background: #{$light-gray-background};
-  --image-shadow-color: #{$image-shadow-color};
-  --hero-overlay-color: #{$hero-overlay-color};
-  --primary-color: #{$primary-color};
-  color: var(--text-color);
-  background-color: var(--bg-color);
-
-  &.dark {
-    --text-color: #{$dark-text-color};
-    --text-color-light: #{$dark-light-text-color};
-    --bg-color: #{$dark-background};
-    --light-gray-border: #{$dark-gray-border};
-    --light-gray: #{$dark-gray};
-    --light-gray-background: #{$dark-light-gray-background};
-    --image-shadow-color: #{$dark-image-shadow-color};
-    --hero-overlay-color: #{$dark-hero-overlay-color};
-    --primary-color: #{$dark-primary-color};
-  }
-
-  &.light {
-    --text-color: #{$text-color};
-    --text-color-light: #{$text-color-light};
-    --bg-color: #{$white};
-    --light-gray-border: #{$light-gray-border};
-    --light-gray: #{$light-gray};
-    --light-gray-background: #{$light-gray-background};
-    --image-shadow-color: #{$image-shadow-color};
-    --hero-overlay-color: #{$hero-overlay-color};
-    --primary-color: #{$primary-color};
-  }
+  color: $text-color;
+  background-color: $white;
 }
 
-// Контейнер
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -63,7 +26,6 @@ body {
   }
 }
 
-// Заголовки
 h1,
 h2,
 h3,
@@ -73,7 +35,7 @@ h6 {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
-  color: var(--text-color);
+  color: $text-color;
 }
 
 h1 {
@@ -100,12 +62,10 @@ h3 {
   }
 }
 
-// Абзацы
 p {
   margin-bottom: 1rem;
 }
 
-// Ссылки
 a {
   color: $primary-color;
   text-decoration: none;
@@ -116,7 +76,6 @@ a {
   }
 }
 
-// Кнопки
 .button {
   @include button-style;
   background-color: $primary-color;

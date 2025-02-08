@@ -2,42 +2,14 @@
 @import "../../styles/mixins";
 
 .header {
-  background-color: $light-gray;
-  padding: 30px 20px;
+  background-color: $white;
+  padding: 15px 20px;
   border-bottom: 1px solid $light-gray-border;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
   @media (max-width: 768px) {
-    padding: 20px 10px;
-  }
-
-  &.dark {
-    background-color: $dark-gray;
-    border-bottom-color: $dark-gray-border;
-
-    .logo {
-      color: $dark-text-color;
-    }
-
-    .hamburger-menu .fa-bars {
-      color: $dark-text-color;
-    }
-
-    .nav-list {
-      background-color: $dark-gray;
-    }
-
-    .nav-link {
-      color: $dark-text-color;
-
-      &:hover {
-        color: $dark-primary-color;
-      }
-    }
-
-    .login-button {
-      background-color: $dark-primary-color;
-      color: $white;
-    }
+    padding: 15px 10px;
   }
 }
 
@@ -47,12 +19,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+  }
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 28px;
-  color: $primary-color;
+    font-weight: 700;
+    font-size: 28px;
+    color: $primary-color;
+    transition: color 0.3s ease;
+    text-decoration: none;
 }
 
 .hamburger-menu {
@@ -64,28 +48,29 @@
     border: none;
     padding: 10px;
     cursor: pointer;
-  }
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
 
-  .fa-bars {
-    font-size: 24px;
-    color: $primary-color;
+    &:hover {
+      background-color: rgba($primary-color, 0.1);
+    }
+
+    .fa-bars {
+      font-size: 24px;
+      color: $primary-color;
+    }
   }
 }
 
 .nav-open {
-  .nav-list {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
+  @media (max-width: 768px) {
     width: 100%;
-    background-color: $light-gray;
-    z-index: 10;
-  }
-
-  .login-button-wrapper {
-    margin-top: 0;
+    order: 3;
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
   }
 }
 
@@ -98,13 +83,10 @@
 
   @media (max-width: 768px) {
     display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: $light-gray;
     z-index: 10;
+    padding: 20px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    background-color: $white;
   }
 }
 
@@ -113,70 +95,64 @@
 
   @media (max-width: 768px) {
     margin-left: 0;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 }
 
 .nav-link {
   text-decoration: none;
   color: $text-color;
-  transition: color 0.3s ease;
   cursor: pointer;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+    font-size: 1rem;
 
   &:hover {
     color: $primary-color;
+    background-color: rgba($primary-color, 0.1);
   }
 }
-
-.login-button-wrapper {
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    margin-top: 0;
-  }
+.login-button-wrapper, .signup-button-wrapper{
+    margin-left: 10px;
 }
-
-.login-button {
-  background-color: $primary-color;
-  color: $white;
+.login-button,
+.signup-button {
   padding: 10px 20px;
   border-radius: 5px;
+  transition: background-color 0.3s ease;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: $primary-color;
+  color: $white;
+    font-size: 1rem;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
 }
 
-.theme-toggler {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
-  margin-left: 20px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+//стили для кнопки Logout
+.logout-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: $secondary-color;
+    color: $white;
+    font-size: 1rem;
 
-  &:focus {
-    outline: none;
-  }
-
-  .fa-sun,
-  .fa-moon {
-    transition: opacity 0.3s ease;
-  }
-
-  .fa-sun {
-    color: $primary-color;
-
-    &.visible {
-      opacity: 1;
+    &:hover {
+        background-color: darken($secondary-color, 10%);
     }
-  }
+}
 
-  .fa-moon {
-    color: $dark-primary-color;
-
-    &.visible {
-      opacity: 1;
-    }
-  }
+.username {
+    margin-right: 10px;
+    font-weight: 600;
+    color: $text-color;
 }

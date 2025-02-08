@@ -3,52 +3,13 @@
 
 .pricing {
   padding: 80px 20px;
-  background-color: $white;
+  background-color: #f5fafd; // Добавляем фон ко всей секции
   display: flex;
   flex-direction: column;
   align-items: center;
 
   @media (max-width: 768px) {
     padding: 60px 20px;
-  }
-
-  &.dark {
-    background-color: $dark-background;
-
-    .pricing-title,
-    .pricing-card-title,
-    .pricing-card-description {
-      color: $dark-text-color;
-    }
-
-    .pricing-card-features li {
-      color: $dark-text-color;
-
-      &::before {
-        color: $dark-primary-color;
-      }
-    }
-
-    .pricing-card {
-      border-color: $dark-gray-border;
-      box-shadow: 0px 2px 5px $dark-image-shadow-color;
-      background-color: $dark-gray;
-
-      &.pricing-card-popular {
-        box-shadow: 0px 5px 15px $dark-image-shadow-color;
-
-        .pricing-card-price {
-          color: $dark-primary-color;
-        }
-        .pricing-card-ribbon {
-          background-color: $dark-primary-color;
-          color: $dark-text-color;
-        }
-      }
-    }
-    .pricing-card-price {
-      color: $dark-text-color;
-    }
   }
 }
 
@@ -111,6 +72,7 @@
   }
 }
 
+// Стили для .pricing-card
 .pricing-card {
   width: calc(33.333% - 30px);
   max-width: none;
@@ -120,16 +82,9 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  background-color: $white; // Фон карточек *остается белым*
   text-align: center;
-
-  &.pricing-card-popular {
-    transform: scale(1.05);
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-
-    .pricing-card-price {
-      color: $primary-color;
-    }
-  }
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
 
   @media (max-width: 1024px) {
     width: calc(50% - 30px);
@@ -146,14 +101,61 @@
     margin-top: auto;
     align-self: center;
   }
+
+  .pricing-card-icon {
+    width: 2em;
+    height: 2em;
+    margin: 0 auto;
+    margin-bottom: 15px;
+
+    svg {
+      font-size: 2em;
+      color: $primary-color; // Цвет иконки
+    }
+  }
+
+  .pricing-card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: $text-color; // Цвет заголовка
+  }
+
+  .pricing-card-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: left;
+    flex-grow: 1;
+
+    li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      color: $text-color; // Цвет текста особенностей
+
+      &::before {
+        content: "\f00c";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: $primary-color; // Цвет галочки
+        margin-right: 10px;
+        font-size: 0.8rem;
+      }
+    }
+  }
 }
 
-.pricing-card-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 15px;
-  text-align: center;
-  color: $text-color;
+// Стили для .pricing-card-popular
+.pricing-card-popular {
+  position: relative;
+  transform: scale(1.05);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); // Более сильная тень
+  background-color: $white; // Фон
+
+  .pricing-card-price {
+    color: $primary-color; // Цвет цены
+  }
 }
 
 .pricing-card-price {
@@ -161,47 +163,11 @@
   font-weight: 700;
   margin-bottom: 20px;
   text-align: center;
-  color: $primary-color; // Добавил
-}
-
-.pricing-card-description {
-  font-size: 1rem;
-  line-height: 1.6;
   color: $text-color;
-  margin-bottom: 20px;
 }
 
-.pricing-card-features {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-  text-align: left;
-  flex-grow: 1;
-
-  li {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    color: $text-color;
-
-    &::before {
-      content: "\f00c";
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      color: $primary-color;
-      margin-right: 10px;
-      font-size: 0.8rem;
-    }
-  }
-}
-
-.pricing-card-popular {
-  position: relative;
-}
-
+// Стили для .pricing-card-ribbon
 .pricing-card-ribbon {
-  background-color: $primary-color;
-  color: $white;
   padding: 5px 10px;
   position: absolute;
   top: -15px;
@@ -209,4 +175,7 @@
   transform: translateX(-50%);
   border-radius: 5px 5px 0 0;
   font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+  background-color: $primary-color; // Фон
+  color: $white; // Цвет текста
 }

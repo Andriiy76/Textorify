@@ -1,11 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "../styles/components/FAQ.scss";
-import { ThemeContext } from "../context/ThemeContext";
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
-  const { isDarkTheme } = useContext(ThemeContext);
 
   const toggleQuestion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -66,7 +64,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section className={`faq ${isDarkTheme ? "dark" : ""}`}>
+    <section className="faq">
       <div className="container">
         <motion.div
           className="faq-content"
@@ -98,7 +96,7 @@ const FAQ = () => {
             className="faq-list"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }} // Добавили задержку
+            transition={{ duration: 0.6, delay: 0.6 }}
           >
             {faqData.map((faq, index) => (
               <div className="faq-item" key={index}>

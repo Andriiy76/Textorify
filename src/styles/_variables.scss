@@ -3,24 +3,12 @@ $font-family: "Roboto", sans-serif;
 // Цвета для светлой темы
 $primary-color: #007bff;
 $secondary-color: #6c757d;
-$white: #fff; // Добавляем переменную $white
+$white: #fff;
 $black: #000;
 $light-gray: #e0e5ec;
 $light-gray-border: #eee;
 $text-color: #333;
 $text-color-light: #666;
 $image-shadow-color: rgba(0, 0, 0, 0.2);
-$hero-overlay-color: rgba(33, 37, 41, 0.7);
+$hero-overlay-color: rgba(18, 44, 70, 0.7);
 $light-gray-background: #f5fafd;
-
-// Цвета для темной темы
-$dark-background: #121212;
-$dark-text-color: #f8f9fa;
-$dark-light-text-color: #a0aec0;
-$dark-gray-border: #666;
-$dark-gray: #343a40;
-$dark-image-shadow-color: rgba(255, 255, 255, 0.2);
-$dark-hero-overlay-color: rgba(255, 255, 255, 0.7);
-$dark-light-gray-background: #666;
-$dark-primary-color: #007bff;
-$dark-secondary-color: #6c757d;

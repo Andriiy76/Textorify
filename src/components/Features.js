@@ -1,55 +1,64 @@
-import React, { useContext } from "react";
+import React from "react";
 import "../styles/components/Features.scss";
 import { motion } from "framer-motion";
-import { ThemeContext } from "../context/ThemeContext";
+import {
+  faImages,
+  faVolumeUp,
+  faCalendarAlt,
+  faCheckCircle,
+  faSignature,
+  faMicrophone,
+  faPlug,
+  faHandPointer,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Features = () => {
-  const { isDarkTheme } = useContext(ThemeContext);
   const featuresData = [
     {
-      icon: "fas fa-images",
+      icon: faImages,
       title: "Visualize Your Content",
       description:
         "Textorify not only creates text but also automatically selects relevant images. Save time and create comprehensive content in one window!",
     },
     {
-      icon: "fas fa-volume-up",
+      icon: faVolumeUp,
       title: "Voice Your Texts",
       description:
         "Transform any text into an audio file with realistic voices. Create podcasts, audiobooks, and voiceovers for videos effortlessly.",
     },
     {
-      icon: "far fa-calendar-alt",
+      icon: faCalendarAlt,
       title: "Smart Content Planning",
       description:
         "Textorify analyzes trends and suggests relevant topics for your content. Plan your publications based on real data, not guesswork.",
     },
     {
-      icon: "fas fa-check-circle",
+      icon: faCheckCircle,
       title: "Texts That Work",
       description:
         "Built-in tools for grammar checking, SEO optimization, and style improvement will help make your texts even more effective.",
     },
     {
-      icon: "fas fa-signature",
+      icon: faSignature,
       title: "Your Brand's Signature Style",
       description:
         "Textorify helps define and maintain your brand's tone of voice, ensuring all your texts are consistent in style.",
     },
     {
-      icon: "fas fa-microphone",
+      icon: faMicrophone,
       title: "Text from Audio/Video",
       description:
         "Upload an audio or video file, and Textorify will transform it into text. Create subtitles, transcribe interviews, and extract information from multimedia content.",
     },
     {
-      icon: "fas fa-plug",
+      icon: faPlug,
       title: "Seamless Integrations",
       description:
         "Connect Textorify with your favorite tools and platforms. Enjoy smooth integration with popular services like Google Docs, WordPress, Slack, and more.",
     },
     {
-      icon: "fas fa-hand-pointer",
+      icon: faHandPointer,
       title: "Easy to Use",
       description:
         "Textorify boasts an intuitive interface designed for effortless content creation. No steep learning curve – just start typing and let the AI do the rest.",
@@ -61,7 +70,7 @@ const Features = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2, // Задержка между появлением дочерних элементов
+        staggerChildren: 0.2,
       },
     },
   };
@@ -72,7 +81,7 @@ const Features = () => {
   };
 
   return (
-    <section className={`features ${isDarkTheme ? "dark" : ""}`}>
+    <section className="features">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -102,11 +111,13 @@ const Features = () => {
                 key={index}
                 variants={itemVariants}
               >
-                <i
-                  className={`${feature.icon} feature-icon ${
-                    isDarkTheme ? "dark" : ""
-                  }`}
-                ></i>
+                <div className="feature-icon-wrapper">
+                  {" "}
+                  <FontAwesomeIcon
+                    icon={feature.icon}
+                    className="feature-icon"
+                  />
+                </div>
                 <h3 className="feature-title">{feature.title}</h3>
                 <p className="feature-description">{feature.description}</p>
               </motion.div>

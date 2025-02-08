@@ -8,40 +8,6 @@
   @media (max-width: 768px) {
     padding: 60px 20px;
   }
-
-  &.dark {
-    background-color: $dark-background;
-
-    .step:nth-child(odd) {
-      background-color: darken($dark-background, 5%);
-    }
-
-    .howitworks-title,
-    .step-title,
-    .step-description {
-      color: $dark-text-color;
-    }
-  }
-}
-
-.howitworks-alternate {
-  .step:nth-child(odd) {
-    background-color: $light-gray-background;
-  }
-
-  .step:nth-child(even) {
-    .step-image {
-      @media (min-width: 769px) {
-        order: 2;
-      }
-    }
-
-    .step-content {
-      @media (min-width: 769px) {
-        order: 1;
-      }
-    }
-  }
 }
 
 .howitworks-container {
@@ -100,6 +66,25 @@
   width: 100%;
   margin-bottom: 40px;
   padding: 40px;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  background-color: #f5fafd; //  Добавляем фон!
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); //  Можно добавить тень
+
+  //  Стили для четных и нечетных карточек (для десктопа)
+  &:nth-child(even) {
+    .step-image {
+      @media (min-width: 769px) {
+        order: 2; //  Изображение справа
+      }
+    }
+
+    .step-content {
+      @media (min-width: 769px) {
+        order: 1; //  Текст слева
+      }
+    }
+  }
 
   @media (max-width: 768px) {
     flex-direction: column;
