@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./styles/index.scss";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -20,51 +20,44 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
-import { ThemeProvider, ThemeContext } from "./context/ThemeContext";
 
 library.add(fas, far);
 
-// ...
 function App() {
-  const { isDarkTheme } = useContext(ThemeContext);
-
   useEffect(() => {
-    document.body.classList.toggle("dark", isDarkTheme);
-    document.body.classList.toggle("light", !isDarkTheme);
-  }, [isDarkTheme]);
+    document.body.classList.remove("dark");
+  }, []);
 
   return (
-    <ThemeProvider>
-      <Router>
-        <div className="App">
-          <Header />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <HeroSection />
-                  <Features />
-                  <HowItWorks />
-                  <Pricing />
-                  <Testimonials />
-                  <FAQ />
-                </>
-              }
-            />
-            <Route path="/services" element={<Services />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/terms" element={<TermsOfService />} />
-          </Routes>
-          <Footer />
-        </div>
-      </Router>
-    </ThemeProvider>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <HeroSection />
+                <Features />
+                <HowItWorks />
+                <Pricing />
+                <Testimonials />
+                <FAQ />
+              </>
+            }
+          />
+          <Route path="/services" element={<Services />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

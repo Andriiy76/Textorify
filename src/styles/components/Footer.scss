@@ -7,23 +7,6 @@
   text-align: center;
   border-top: 1px solid $light-gray-border;
   font-size: 14px;
-
-  &.dark {
-    background-color: $dark-gray;
-    border-top-color: $dark-gray-border;
-
-    .copyright {
-      color: $dark-light-text-color; // Исправлено на $dark-light-text-color
-    }
-
-    .footer-links a {
-      color: $dark-text-color;
-
-      &:hover {
-        color: lighten($dark-text-color, 15%);
-      }
-    }
-  }
 }
 
 .footer-container {

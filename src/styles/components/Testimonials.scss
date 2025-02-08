@@ -3,25 +3,10 @@
 
 .testimonials {
   padding: 80px 20px;
-  background-color: $white;
+  background-color: $white; // Фон секции (можно оставить белым)
 
   @media (max-width: 768px) {
     padding: 60px 20px;
-  }
-
-  &.dark {
-    background-color: $dark-background;
-
-    .testimonial-card {
-      border-color: $dark-gray-border;
-      box-shadow: 0px 2px 5px $dark-image-shadow-color;
-
-      .testimonial-text,
-      .testimonial-author,
-      .testimonial-role {
-        color: $dark-text-color;
-      }
-    }
   }
 }
 
@@ -85,6 +70,7 @@
   border-radius: 5px;
   padding: 30px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f5fafd; // Добавляем фон к карточкам!
 
   @media (max-width: 992px) {
     width: calc(50% - 20px);
@@ -95,32 +81,32 @@
     max-width: 500px;
     padding: 20px;
   }
-}
 
-.testimonial-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 20px;
-}
+  .testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 20px;
+  }
 
-.testimonial-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: $text-color;
-  margin-bottom: 20px;
-}
+  .testimonial-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: $text-color;
+    margin-bottom: 20px;
+  }
 
-.testimonial-author {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: $text-color;
-  margin-bottom: 5px;
-}
+  .testimonial-author {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $text-color;
+    margin-bottom: 5px;
+  }
 
-.testimonial-role {
-  font-size: 1rem;
-  color: $text-color-light;
+  .testimonial-role {
+    font-size: 1rem;
+    color: $text-color-light;
+  }
 }

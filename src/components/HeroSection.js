@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/components/HeroSection.scss";
-import heroImage from "../images/hero.jpeg";
 import { motion } from "framer-motion";
+// Удали импорт heroImage
 
 const HeroSection = () => {
   return (
@@ -47,14 +47,6 @@ const HeroSection = () => {
               Get Started for Free
             </motion.a>
           </div>
-        </motion.div>
-        <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="hero-image"
-        >
-          <img src={heroImage} alt="Artificial intelligence generating text" />
         </motion.div>
       </div>
     </section>

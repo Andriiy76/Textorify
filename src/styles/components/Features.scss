@@ -2,7 +2,7 @@
 @import "../../styles/mixins";
 
 .features {
-  padding: 80px 20px; // Добавил padding по бокам
+  padding: 80px 20px;
   background-color: $light-gray-background;
   display: flex;
   flex-direction: column;
@@ -11,36 +11,6 @@
   @media (max-width: 768px) {
     padding: 60px 20px;
   }
-
-  &.dark {
-    background-image: linear-gradient(
-      to bottom,
-      darken($dark-gray, 5%),
-      darken($dark-gray, 10%)
-    );
-
-    h1,
-    h2,
-    h3,
-    p {
-      color: $dark-text-color;
-    }
-
-    .feature {
-      background-color: $dark-gray;
-      border-color: $dark-gray-border;
-
-      .feature-title,
-      .feature-description {
-        color: $dark-text-color;
-      }
-
-      .feature-icon {
-        color: $dark-primary-color;
-        border-color: $dark-primary-color;
-      }
-    }
-  }
 }
 
 .features-content {
@@ -48,8 +18,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1200px; // Добавил ограничение ширины
-  margin: 0 auto; // Добавил
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .features-section-title,
@@ -58,13 +28,13 @@
 }
 
 .features-intro {
-  margin-bottom: 40px;
+  margin-bottom: 60px; //  Увеличили отступ
   text-align: center;
   width: 100%;
   max-width: 800px;
 
   @media (max-width: 768px) {
-    margin-bottom: 30px;
+    margin-bottom: 40px; //  Уменьшили для мобильных
   }
 }
 
@@ -105,15 +75,22 @@
 
 .feature {
   width: calc(25% - 30px);
-  padding: 30px;
-  border: 1px solid $light-gray-border;
-  border-radius: 5px;
+  padding: 30px; //  Увеличили отступы
+  border: 1px solid $light-gray-border; //  Тонкая рамка
+  border-radius: 10px; //  Скругление
   text-align: center;
   background-color: $white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start; //  Выравниваем по верхнему краю
+  transition: transform 0.3s ease, box-shadow 0.3s ease; //  Добавили плавность
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); //  Легкая тень
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); //  Увеличиваем тень при наведении
+  }
 
   @media (max-width: 1200px) {
     width: calc(50% - 30px);
@@ -122,48 +99,44 @@
   @media (max-width: 768px) {
     width: 100%;
     max-width: 400px;
-    padding: 20px;
+    padding: 25px; //  Уменьшили для мобильных
     margin: 0 auto;
   }
-}
+  .feature-icon-wrapper {
+    @include flex-center;
+    width: 60px;
+    height: 60px;
+    border: 2px solid $primary-color; // Рамка вокруг иконок
+    border-radius: 50%;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; // Добавил transition
 
-.feature-icon {
-  @include flex-center;
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: $primary-color;
-  width: 50px;
-  height: 50px;
-  border: 2px solid $primary-color;
-  border-radius: 50%;
-
-  @media (max-width: 768px) {
-    font-size: 1.7rem; // Немного уменьшил размер для мобильных
-    width: 50px; // Немного уменьшил размер для мобильных
-    height: 50px; // Немного уменьшил размер для мобильных
-    margin-bottom: 10px; // Уменьшил отступ
+        .feature-icon {
+            font-size: 2rem;
+            color: $primary-color;
+            transition: color 0.3s ease;
+        }
   }
-}
+  .feature-title {
+    font-size: 1.375rem;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+    color: $text-color;
 
-.feature-title {
-  font-size: 1.25rem;
-  margin-bottom: 15px;
-  text-align: center;
-  font-weight: 600;
-  color: $text-color;
-
-  @media (max-width: 768px) {
-    font-size: 1.2rem; // Немного уменьшил размер для мобильных
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
   }
-}
 
-.feature-description {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: $text-color;
-  text-align: center;
+  .feature-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: $text-color;
+    text-align: center;
 
-  @media (max-width: 768px) {
-    font-size: 1rem; // Немного уменьшил размер для мобильных
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
 }

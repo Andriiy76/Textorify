@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "../styles/components/Testimonials.scss";
 import user1 from "../images/user1.webp";
 import user2 from "../images/user2.webp";
@@ -7,16 +7,14 @@ import user4 from "../images/user4.jpeg";
 import user5 from "../images/user5.jpeg";
 import user6 from "../images/user6.jpeg";
 import { motion } from "framer-motion";
-import { ThemeContext } from "../context/ThemeContext";
 
 const Testimonials = () => {
-  const { isDarkTheme } = useContext(ThemeContext);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2, // Задержка между появлением дочерних элементов
+        staggerChildren: 0.2,
       },
     },
   };
@@ -27,7 +25,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className={`testimonials ${isDarkTheme ? "dark" : ""}`}>
+    <section className="testimonials">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
