@@ -20,44 +20,48 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
+//import ProtectedRoute from "./components/ProtectedRoute";
 
 library.add(fas, far);
 
 function App() {
+
   useEffect(() => {
     document.body.classList.remove("dark");
   }, []);
 
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <HeroSection />
-                <Features />
-                <HowItWorks />
-                <Pricing />
-                <Testimonials />
-                <FAQ />
-              </>
-            }
-          />
-          <Route path="/services" element={<Services />} />
-          <Route path="/pricing" element={<PricingPage />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<TermsOfService />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+      <Router>
+          <div className="App">
+            <Header />
+            <main className="main-content">
+              <Routes>
+                <Route
+                    path="/"
+                    element={
+                      <>
+                        <HeroSection />
+                        <Features />
+                        <HowItWorks />
+                        <Pricing />
+                        <Testimonials />
+                        <FAQ />
+                      </>
+                    }
+                />
+                <Route path="/services" element={<Services />} />
+                <Route path="/pricing" element={<PricingPage />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<TermsOfService />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+      </Router>
   );
 }
 

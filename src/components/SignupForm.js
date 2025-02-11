@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion"; // Уже закомментировано
 import { useNavigate } from 'react-router-dom';
 import "../styles/components/SignupForm.scss";
-import { fakeBackend } from '../auth';
-import { useAuth } from '../context/AuthContext'; // Импортируем useAuth
+import { useAuth } from '../context/AuthContext';
+
+const API_BASE_URL = 'https://orange-engine-jj7g57j94xqw3j6gr-5000.app.github.dev/api/auth'; //  НОВЫЙ URL!
 
 const SignupForm = () => {
     const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ const SignupForm = () => {
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
-    const { login } = useAuth(); //  Используем  useAuth  для доступа к  login
+    const { login } = useAuth();
 
     const handleChange = (e) => {
         setFormData({
@@ -62,38 +63,43 @@ const SignupForm = () => {
 
         if (validate()) {
             setIsSubmitting(true);
+            console.log("data for submit", formData)
 
-            fakeBackend
-                .registerUser(formData.name, formData.email, formData.password)
-                .then((newUser) => {
-                    console.log("User registered:", newUser);
-                    // alert("Signup successful!"); //  Убираем  alert
-                    setFormData({
-                        name: "",
-                        email: "",
-                        password: "",
-                        confirmPassword: "",
-                    });
-                    login(newUser);       //  Вызываем  login  из  контекста
-                    navigate('/');       //  Редирект на главную
-                })
-                .catch((error) => {
-                    console.error("Signup error:", error);
-                    alert(`Signup failed: ${error}`);
-                })
-              .finally(() => {
+            fetch(`${API_BASE_URL}/register`, { //  Используем  API_BASE_URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Registration failed: ${response.status}`);
+                }
+                return response.json();
+              })
+            .then((data) => {
+                console.log("User registered:", data);
+                login(data.user, data.token);
+                navigate('/');
+            })
+            .catch((error) => {
+                console.error("Signup error:", error);
+                setErrors({ ...errors, backend: error.message });
+            })
+            .finally(() => {
                 setIsSubmitting(false);
-              });
+            });
         }
     };
 
     return (
-        <motion.div
-            className="container"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-        >
+        //<motion.div
+        //    className="container"
+        //    initial={{ opacity: 0 }}
+        //    animate={{ opacity: 1 }}
+        //    transition={{ duration: 0.5 }}
+        //>
             <div className="signup-form">
             <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
@@ -103,7 +109,7 @@ const SignupForm = () => {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
+                    value={formData.name || ''}
                     onChange={handleChange}
                     required
                 />
@@ -115,7 +121,7 @@ const SignupForm = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
+                    value={formData.email || ''}
                     onChange={handleChange}
                     required
                 />
@@ -127,7 +133,7 @@ const SignupForm = () => {
                     type="password"
                     id="password"
                     name="password"
-                    value={formData.password}
+                    value={formData.password || ''}
                     onChange={handleChange}
                     required
                 />
@@ -141,7 +147,7 @@ const SignupForm = () => {
                     type="password"
                     id="confirmPassword"
                     name="confirmPassword"
-                    value={formData.confirmPassword}
+                    value={formData.confirmPassword || ''}
                     onChange={handleChange}
                     required
                 />
@@ -149,12 +155,13 @@ const SignupForm = () => {
                     <p className="error-message">{errors.confirmPassword}</p>
                 )}
                 </div>
+                {errors.backend && <p className="error-message">{errors.backend}</p>}
                 <button type="submit" className="button" disabled={isSubmitting}>
                 {isSubmitting ? "Signing Up..." : "Sign Up"}
                 </button>
             </form>
             </div>
-        </motion.div>
+        //</motion.div>
     );
 };
 

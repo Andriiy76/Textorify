@@ -3,7 +3,8 @@
 
 .signup-form {
   max-width: 400px;
-  margin: 0 auto;
+  margin: 0 auto;  //  Центрируем по горизонтали
+  margin-top: 50px;  //  Добавляем отступ сверху
   padding: 40px;
   background-color: $white;
   border-radius: 5px;
@@ -50,7 +51,12 @@
       padding: 12px;
       font-size: 1.1rem;
       font-weight: 600;
-      // Стили для кнопки уже есть в global.scss
     }
+  }
+
+  .error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 5px;
   }
 }

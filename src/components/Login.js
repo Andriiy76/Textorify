@@ -1,10 +1,9 @@
 import React from 'react';
-import LoginForm from './LoginForm'; //  Импортируем  LoginForm
-
+import LoginForm from './LoginForm';
 const Login = () => {
     return (
         <div className='container'>
-          <LoginForm /> {/*  Используем  LoginForm  */}
+          <LoginForm /> 
         </div>
     );
 };

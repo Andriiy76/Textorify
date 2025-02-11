@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/components/HeroSection.scss";
 import { motion } from "framer-motion";
-// Удали импорт heroImage
 
 const HeroSection = () => {
   return (

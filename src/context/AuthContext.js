@@ -1,40 +1,35 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// Создаем контекст
 const AuthContext = createContext();
 
-// Хук, чтобы было удобнее использовать контекст в компонентах
 export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-// Провайдер контекста
 export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null); // null - пользователь не залогинен
-  const [loading, setLoading] = useState(true); // Добавляем состояние загрузки
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Функция для входа (пока фиктивная)
-  const login = (user) => {
-        setCurrentUser(user);
-        localStorage.setItem('currentUser', JSON.stringify(user)); // Сохраняем в localStorage
-  };
+    //  Измененная функция  login
+    const login = (user, token) => {
+        setCurrentUser({ ...user, token }); //  Сохраняем и  user, и  token
+        localStorage.setItem('currentUser', JSON.stringify({ user, token })); //  Сохраняем  user  и  token
+    };
 
-  // Функция для выхода
-  const logout = () => {
+    const logout = () => {
         setCurrentUser(null);
-        localStorage.removeItem('currentUser'); // Удаляем из localStorage
-  };
+        localStorage.removeItem('currentUser');
+    };
 
-  // Проверяем наличие пользователя в localStorage при загрузке
     useEffect(() => {
-        const savedUser = localStorage.getItem('currentUser');
-        if (savedUser) {
-            setCurrentUser(JSON.parse(savedUser));
+        const savedData = localStorage.getItem('currentUser');
+        if (savedData) {
+            const { user, token } = JSON.parse(savedData);
+            setCurrentUser({ ...user, token }); //  Восстанавливаем  user  и  token
         }
-        setLoading(false); // Устанавливаем loading в false после проверки
+        setLoading(false);
     }, []);
 
-  // Значение, которое будет доступно всем компонентам, обернутым в AuthProvider
   const value = {
     currentUser,
     login,
@@ -44,7 +39,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
-        {!loading && children}
+      {!loading && children}
     </AuthContext.Provider>
   );
 };

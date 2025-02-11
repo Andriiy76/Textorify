@@ -1,10 +1,10 @@
 import React from 'react';
-import SignupForm from './SignupForm'; //  Импортируем  SignupForm
+import SignupForm from './SignupForm';
 
 const Signup = () => {
     return (
       <div className='container'>
-        <SignupForm />  {/*  Используем  SignupForm  */}
+        <SignupForm /> 
       </div>
     );
 };

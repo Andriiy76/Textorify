@@ -14,21 +14,21 @@ function Blog() {
                 <h2>The Rise of AI in Content Creation</h2>
                 <p>Published on: March 1, 2023</p>
                 <p>Discover how AI is transforming the landscape of content creation...</p>
-                {/* Ссылка на полную статью */}
+                
             </article>
 
             <article>
                 <h2>Tips for Effective Content Planning</h2>
                 <p>Published on: February 15, 2023</p>
                 <p>Learn the best strategies for planning your content to engage your audience...</p>
-                {/* Ссылка на полную статью */}
+                
             </article>
 
             <article>
                 <h2>Maximizing SEO with AI Tools</h2>
                 <p>Published on: January 28, 2023</p>
                 <p>Explore how AI tools can boost your SEO efforts and improve your website's ranking...</p>
-                {/* Ссылка на полную статью */}
+                
             </article>
 
             <article>
@@ -37,7 +37,7 @@ function Blog() {
                 <p>
                     A strong brand voice is essential for standing out in the crowded digital world. Learn how to use AI to define, maintain, and evolve your brand's unique voice...
                 </p>
-                {/* Ссылка на полную статью */}
+                
             </article>
         </motion.div>
     );

@@ -1,12 +1,12 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; 
 import "../styles/components/Header.scss";
 import { useAuth } from '../context/AuthContext';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); //  Это  нужно  для  мобильного меню (пока оставим)
   const { currentUser, logout } = useAuth();
 
   const toggleMenu = () => {
@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-container">
-        <Link to="/" className="logo">
+         <Link to="/" className="logo">
           TEXTORIFY
         </Link>
         <div className="nav-right">
@@ -45,8 +45,20 @@ const Header = () => {
                 Blog
               </Link>
             </li>
-            {/*  Условный рендеринг  */}
-            {!currentUser ? (
+            {currentUser ? (
+              <>
+                <li className="nav-item">
+                  <span className="username">
+                    {currentUser.name}
+                    </span>
+                </li>
+                <li className="nav-item">
+                  <button className="logout-button" onClick={logout}>
+                    Logout
+                  </button>
+                </li>
+              </>
+             ) : (
               <>
                 <li className="nav-item">
                   <Link to="/login" className="login-button-wrapper">
@@ -57,19 +69,6 @@ const Header = () => {
                   <Link to="/signup" className="signup-button-wrapper">
                     <button className="signup-button">Signup</button>
                   </Link>
-                </li>
-              </>
-            ) : (
-              <>
-                <li className="nav-item">
-                  <span className="username">
-                    {currentUser.name}
-                    </span> {/*  Показываем имя пользователя  */}
-                </li>
-                <li className="nav-item">
-                  <button className="logout-button" onClick={logout}> {/* Добавляем кнопку Logout */}
-                    Logout
-                  </button>
                 </li>
               </>
             )}

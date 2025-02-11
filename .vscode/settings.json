@@ -1,5 +1,5 @@
 {
-    "search.exclude": {
-      "**/.bower_components": true
-    }
+  "search.exclude": {
+    "**/.bower_components": true
   }
+}

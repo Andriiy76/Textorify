@@ -6,9 +6,10 @@ import {
   faRocket,
   faUser,
   faBriefcase,
-} from "@fortawesome/free-solid-svg-icons";
+} from "@fortawesome/free-solid-svg-icons"; //  Убедись, что импортированы ПРАВИЛЬНЫЕ иконки!
 
 const Pricing = () => {
+    
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -50,7 +51,7 @@ const Pricing = () => {
           >
             <motion.div className="pricing-card" variants={itemVariants}>
               <div className="pricing-card-icon">
-                <FontAwesomeIcon icon={faUser} />
+                <FontAwesomeIcon icon={faUser} />  {/*  Иконка для Starter  */}
               </div>
               <h3 className="pricing-card-title">Starter</h3>
               <div className="pricing-card-price">$10/month</div>
@@ -75,7 +76,7 @@ const Pricing = () => {
             >
               <div className="pricing-card-ribbon">Most Popular</div>
               <div className="pricing-card-icon">
-                <FontAwesomeIcon icon={faRocket} />
+                <FontAwesomeIcon icon={faRocket} />  {/*  Иконка для Pro  */}
               </div>
               <h3 className="pricing-card-title">Pro</h3>
               <div className="pricing-card-price">$30/month</div>
@@ -96,7 +97,7 @@ const Pricing = () => {
             </motion.div>
             <motion.div className="pricing-card" variants={itemVariants}>
               <div className="pricing-card-icon">
-                <FontAwesomeIcon icon={faBriefcase} />
+                <FontAwesomeIcon icon={faBriefcase} />  {/*  Иконка для Business  */}
               </div>
               <h3 className="pricing-card-title">Business</h3>
               <div className="pricing-card-price">$100/month</div>
