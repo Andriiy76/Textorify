@@ -1,11 +1,13 @@
 // backend/db/db.js
-const sqlite3 = require('sqlite3');
-const { open } = require('sqlite');
-const path = require('path');  //  Вернули!
+import sqlite3 from 'sqlite3';
+import { open } from 'sqlite';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// const dbPath = '../../database.db';
-const dbPath = path.resolve(__dirname, '../../database.db'); //  Исправленный путь!
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
+const dbPath = path.resolve(__dirname, '../../database.db');
 
 async function connectToDatabase() {
   try {
@@ -30,8 +32,8 @@ async function connectToDatabase() {
 
   } catch (error) {
     console.error('Database connection error:', error);
-    throw error;
+    throw error; // Важно "пробросить" ошибку
   }
 }
 
-module.exports = connectToDatabase;
+export default connectToDatabase;
