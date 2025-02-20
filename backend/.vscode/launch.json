@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Backend (nodemon)",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script",
+                "dev"  //  Используем команду "dev" (которая запускает nodemon)
+            ],
+            "port": 9229,  //  Порт для отладки (можно оставить 9229)
+            "restart": true, //  Автоматически перезапускать при изменениях
+            "console": "integratedTerminal", //  Выводить вывод в терминал VS Code
+            "internalConsoleOptions": "neverOpen", //  Не открывать отдельную консоль отладки
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd": "${workspaceFolder}" //  Рабочая директория - корень проекта backend
+        }
+    ]
+}

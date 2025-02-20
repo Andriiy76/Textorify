@@ -1,0 +1,50 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.footer {
+  background-color: variables.$light-gray;
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid variables.$light-gray-border;
+  font-size: 14px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.copyright {
+  color: variables.$text-color-light;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.footer-links a {
+  color: variables.$text-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

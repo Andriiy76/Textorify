@@ -1,0 +1,159 @@
+@use "sass:color";
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.header {
+  background-color: variables.$white;
+  padding: 15px 20px;
+  border-bottom: 1px solid variables.$light-gray-border;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: 768px) {
+    padding: 15px 10px;
+  }
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+  }
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 28px;
+    color: variables.$primary-color;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.hamburger-menu {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: rgba(variables.$primary-color, 0.1);
+    }
+
+    .fa-bars {
+      font-size: 24px;
+      color: variables.$primary-color;
+    }
+  }
+}
+
+.nav-open {
+  @media (max-width: 768px) {
+    width: 100%;
+    order: 3;
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: none;
+    z-index: 10;
+    padding: 20px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    background-color: variables.$white;
+  }
+}
+
+.nav-item {
+  margin-left: 30px;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+}
+
+.nav-link {
+  text-decoration: none;
+  color: variables.$text-color;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+    font-size: 1rem;
+
+  &:hover {
+    color: variables.$primary-color;
+    background-color: rgba(variables.$primary-color, 0.1);
+  }
+}
+.login-button-wrapper, .signup-button-wrapper{
+    margin-left: 10px;
+}
+.login-button,
+.signup-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: variables.$primary-color;
+  color: variables.$white;
+    font-size: 1rem;
+
+  &:hover {
+    background-color: color.adjust(variables.$primary-color, $lightness: -10%);
+  }
+}
+
+//стили для кнопки Logout
+.logout-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: variables.$secondary-color;
+    color: variables.$white;
+    font-size: 1rem;
+
+    &:hover {
+        background-color: color.adjust(variables.$secondary-color, $lightness: -10%);
+    }
+}
+
+.username {
+    margin-right: 10px;
+    font-weight: 600;
+    color: variables.$text-color;
+}

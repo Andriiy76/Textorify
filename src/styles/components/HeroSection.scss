@@ -1,0 +1,139 @@
+@use "sass:color";
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.hero {
+  padding: 150px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70vh;
+  position: relative;
+  background-color: variables.$white;
+  //  Фоновое изображение (если нужно)
+  background-image: url("/images/hero-background.png"); //  Замени на свой путь!
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* УДАЛЯЕМ скругление углов */
+  /* border-radius: 0 0 50% 50% / 4%; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 80px 20px;
+    min-height: auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: 60px 10px;
+  }
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.hero-content {
+  text-align: left;
+  margin-bottom: 40px;
+  width: 50%; // Ширина
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: variables.$text-color;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: variables.$text-color-light;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 768px) {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
+  }
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: variables.$primary-color;
+    color: variables.$white;
+    font-size: 1rem;
+    text-decoration: none;
+
+    &:first-child {
+      margin-right: 20px;
+    }
+    &:hover {
+      background-color: color.adjust(variables.$primary-color, $lightness: -10%);
+    }
+  }
+}
+
+.hero-image {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+  }
+}

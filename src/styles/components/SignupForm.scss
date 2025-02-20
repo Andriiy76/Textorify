@@ -1,0 +1,61 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.signup-form {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 40px;
+  background-color: variables.$white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  h2 {  //  Используем h2
+    text-align: center;
+    margin-bottom: 30px;
+    color: variables.$text-color;
+  }
+
+    .form-group { //  Добавил, чтоб не ругался
+      margin-bottom: 20px;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: variables.$text-color;
+        font-weight: 600;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid variables.$light-gray-border;
+        border-radius: 5px;
+        font-size: 1rem;
+        color: variables.$text-color;
+        background-color: variables.$white;
+
+        &:focus {
+          outline: none;
+          border-color: variables.$primary-color;
+          box-shadow: 0 0 0 2px rgba(variables.$primary-color, 0.2);
+        }
+      }
+  }
+
+  button { //  Изменил селектор на button (более общий)
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+
+  .error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 5px;
+  }
+}

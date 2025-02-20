@@ -1,0 +1,148 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.howitworks {
+  padding: 80px 20px;
+  background-color: variables.$white;
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+.howitworks-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.howitworks-intro {
+  margin-bottom: 40px;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
+}
+
+.howitworks-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+  color: variables.$text-color;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+.howitworks-description {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: variables.$text-color-light;
+  max-width: 800px;
+  margin: 0 auto 40px;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 40px;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  background-color: #f5fafd; //  Добавляем фон!
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); //  Можно добавить тень
+
+  //  Стили для четных и нечетных карточек (для десктопа)
+  &:nth-child(even) {
+    .step-image {
+      @media (min-width: 769px) {
+        order: 2; //  Изображение справа
+      }
+    }
+
+    .step-content {
+      @media (min-width: 769px) {
+        order: 1; //  Текст слева
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+}
+
+.step-image {
+  flex: 0 0 50%;
+  max-width: 50%;
+  height: auto;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+}
+
+.step-content {
+  padding: 0 30px;
+  text-align: left;
+  flex-grow: 1;
+
+  @media (max-width: 768px) {
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.step-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: variables.$text-color;
+
+  @media (max-width: 768px) {
+    font-size: 1.375rem;
+  }
+}
+
+.step-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: variables.$text-color;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.cta {
+  text-align: center;
+  margin-top: 40px;
+
+  @media (max-width: 768px) {
+    margin-top: 30px;
+  }
+}

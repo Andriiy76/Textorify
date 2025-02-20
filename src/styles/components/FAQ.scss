@@ -1,0 +1,131 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.faq {
+  padding: 80px 20px;
+  background-color: #f5fafd; // Фон для всей секции
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+.faq-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.faq-intro {
+  text-align: center;
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
+}
+
+.faq-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: variables.$text-color;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+.faq-description {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: variables.$text-color-light;
+  max-width: 800px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+}
+
+.faq-list {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid variables.$light-gray-border;
+  padding: 20px 0;
+  overflow: hidden;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.faq-question {
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f5fafd; // Фон вопроса такой же, как у секции
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: variables.$text-color;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &.active {
+    .faq-plus {
+      transform: rotate(45deg);
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+}
+
+.faq-plus {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: variables.$primary-color;
+  transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.faq-answer {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: variables.$text-color;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  background-color: variables.$white; // Фон ответа - белый
+  padding: 0 15px 15px;
+
+  &.active {
+    max-height: 500px;
+  }
+
+  p {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    line-height: 1.7;
+  }
+}

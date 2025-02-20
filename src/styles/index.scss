@@ -1,0 +1,14 @@
+@use "variables";
+@use "mixins";
+@use "global";
+@use "components/Header";
+@use "components/HeroSection";
+@use "components/Features";
+@use "components/HowItWorks";
+@use "components/Pricing";
+@use "components/Testimonials";
+@use "components/FAQ";
+@use "components/Footer";
+//@use "components/LoginForm";  //  Закомментировать!
+//@use "components/SignupForm"; //  Закомментировать!
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap");

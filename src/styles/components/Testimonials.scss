@@ -1,0 +1,112 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+
+.testimonials {
+  padding: 80px 20px;
+  background-color: variables.$white; // Фон секции (можно оставить белым)
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+.testimonials-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonials-intro {
+  text-align: center;
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
+}
+
+.testimonials-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: variables.$text-color;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+.testimonials-description {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: variables.$text-color-light;
+  max-width: 800px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+}
+
+.testimonials-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+.testimonial-card {
+  width: calc(33.333% - 20px);
+  border: 1px solid variables.$light-gray-border;
+  border-radius: 5px;
+  padding: 30px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f5fafd; // Добавляем фон к карточкам!
+
+  @media (max-width: 992px) {
+    width: calc(50% - 20px);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+  }
+
+  .testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  .testimonial-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: variables.$text-color;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-author {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: variables.$text-color;
+    margin-bottom: 5px;
+  }
+
+  .testimonial-role {
+    font-size: 1rem;
+    color: variables.$text-color-light;
+  }
+}
