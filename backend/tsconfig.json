@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",  //  Или новее (ES2022, ES2023, ESNext)
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "moduleResolution": "node",  //  ДОБАВЛЕНО!
+    "esModuleInterop": true,        //  ДОБАВЛЕНО!
+    "resolveJsonModule": true,      //  ДОБАВЛЕНО (если используете JSON)
+    "isolatedModules": true,        //  ДОБАВЛЕНО (для TypeScript >= 4.9)
+    "paths": {                      // ДОБАВЛЕНО (если используете алиасы путей)
+      "*": [
+        "node_modules/*"
+      ]
+    },
+    "types": ["node"]
+  },
+  "include": ["src/**/*"],    //  ДОБАВЛЕНО!
+  "exclude": ["node_modules", "dist"]  //  ДОБАВЛЕНО!
+}
